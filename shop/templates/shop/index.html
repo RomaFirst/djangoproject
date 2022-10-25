@@ -1,0 +1,342 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col">
+                        <input type="search" placeholder="Entrez le nom du produit que vous cherchez" name="item-name" class="form-control form-control-borderless">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-success">Recherche</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for product in product_object %}
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{{ product.image }}" alt="" class="card-ing-top">
+                <div class="card-body">
+                    <div id="aa{{ product.id }}" class="card-title">{{ product.title }}</div>
+                    <div id="price{{ product.id }}" style="color:orange" class="card-text"> {{ product.price }}</div>
+                    <a href="{{ product.id }}" class="btn btn-warning">Voire</a>
+                    <button id="{{ product.id }}"  class="btn ted btn-success">Ajouter</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-3 offset-md-4">
+            <ul class="pagination">
+                {% if product_object.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ product_object.previous_page_number }}">Precedent</a>
+                    </li>
+                {% endif %}    
+
+                    <li class="page-item active">
+                        <a class="page-link" href="?page={{ product_object.number }}">{{ product_object.number }}</a>
+                    </li>
+
+                {% if product_object.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ product_object.next_page_number }}">Suivant</a>
+                    </li>
+                {% endif %} 
+
+            </ul>
+        </div>
+    </div>
+
+      <!-- Site footer -->
+      <footer class="site-footer bg-warning" >
+        
+<style>
+            .ul {
+    margin: 0px;
+    padding: 0px;
+}
+.footer-section {
+  background: #151414;
+  position: relative;
+}
+.footer-cta {
+  border-bottom: 1px solid #373636;
+}
+.single-cta i {
+  color: #ff5e14;
+  font-size: 30px;
+  float: left;
+  margin-top: 8px;
+}
+.cta-text {
+  padding-left: 15px;
+  display: inline-block;
+}
+.cta-text h4 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.cta-text span {
+  color: #757575;
+  font-size: 15px;
+}
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+.footer-pattern img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 330px;
+  background-size: cover;
+  background-position: 100% 100%;
+}
+.footer-logo {
+  margin-bottom: 30px;
+}
+.footer-logo img {
+    max-width: 200px;
+}
+.footer-text p {
+  margin-bottom: 14px;
+  font-size: 14px;
+      color: #7e7e7e;
+  line-height: 28px;
+}
+.footer-social-icon span {
+  color: #fff;
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+}
+.footer-social-icon a {
+  color: #fff;
+  font-size: 16px;
+  margin-right: 15px;
+}
+.footer-social-icon i {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 50%;
+}
+.facebook-bg{
+  background: #3B5998;
+}
+.twitter-bg{
+  background: #55ACEE;
+}
+.google-bg{
+  background: #DD4B39;
+}
+.footer-widget-heading h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  position: relative;
+}
+.footer-widget-heading h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  height: 2px;
+  width: 50px;
+  background: #ff5e14;
+}
+.footer-widget ul li {
+  display: inline-block;
+  float: left;
+  width: 50%;
+  margin-bottom: 12px;
+}
+.footer-widget ul li a:hover{
+  color: #ff5e14;
+}
+.footer-widget ul li a {
+  color: #878787;
+  text-transform: capitalize;
+}
+.subscribe-form {
+  position: relative;
+  overflow: hidden;
+}
+.subscribe-form input {
+  width: 100%;
+  padding: 14px 28px;
+  background: #2E2E2E;
+  border: 1px solid #2E2E2E;
+  color: #fff;
+}
+.subscribe-form button {
+    position: absolute;
+    right: 0;
+    background: #ff5e14;
+    padding: 13px 20px;
+    border: 1px solid #ff5e14;
+    top: 0;
+}
+.subscribe-form button i {
+  color: #fff;
+  font-size: 22px;
+  transform: rotate(-6deg);
+}
+.copyright-area{
+  background: #202020;
+  padding: 25px 0;
+}
+.copyright-text p {
+  margin: 0;
+  font-size: 14px;
+  color: #878787;
+}
+.copyright-text p a{
+  color: #ff5e14;
+}
+.footer-menu li {
+  display: inline-block;
+  margin-left: 20px;
+}
+.footer-menu li:hover a{
+  color: #ff5e14;
+}
+.footer-menu li a {
+  font-size: 14px;
+  color: #878787;
+}
+ </style>
+
+<footer class="footer-section bg-dark">
+    <div class="container">
+        <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="cta-text">
+                            <h4>Siege </h4>
+                            <span>012 Avenue, siao , charleDegaulle</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-phone"></i>
+                        <div class="cta-text">
+                            <h4>Contact</h4>
+                            <span>+226 726-505-90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="far fa-envelope-open"></i>
+                        <div class="cta-text">
+                            <h4>Mail us</h4>
+                            <span>romaouedra@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+            </div>
+        </div>
+    </div>
+
+
+   
+</footer>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+
+        console.log('Juste pour tester ');
+        
+        if(localStorage.getItem('panier')==null){
+            var panier = {};
+                            }else{
+                                    panier = JSON.parse(localStorage.getItem('panier'));
+                                }
+//Afficher et identifier chaue produits au click du boutton Ajout
+        $(document).on('click', '.ted', function(){
+                                console.log('ajouter');
+                //cree une variable qui tock l identifant de chaque produit
+                var item_id=this.id.toString();
+                console.log(item_id);
+
+                //utiliser lid comme cle et l associer a une valeur
+
+            if(panier[item_id] != undefined){
+                    
+                                        //creer une liste a l´intereieur du dictionnaire pour recueillir la quantité des produit
+                                        quantite = panier[item_id][0] +1 ;
+                                        panier[item_id][0] = quantite;
+
+                                        //rendre notre panier de deux dimensions a trois dimensions pour afficher le prix , qte, prix total sous forme int 
+                                        panier[item_id][2]+=parseFloat(document.getElementById("price" + item_id).innerHTML);
+                
+                                             }else{
+                                                    quantite = 1;
+                                                    prix=parseFloat(document.getElementById("price" + item_id).innerHTML); 
+
+                                                    //si l ement n exsiste pas
+                                                    nom =  document.getElementById("aa"+item_id).innerHTML;
+                                                    panier[item_id] = [quantite, nom, prix];
+
+                                                    }
+
+                console.log(panier);
+
+                //creer une cle qui mettre nos valeur en local avant la validation de la commande
+                localStorage.setItem('panier', JSON.stringify(panier));
+
+                //recuperer la longueur des clees en local(pour un click sur un produit)
+                document.getElementById("panier").innerHTML="Panier(" + Object.keys(panier).length + " )";
+
+                //Creer une fenetre d affichage d une liste de dtail d ajout pour un panier ou cree un popower😀😀
+               
+
+        });
+
+    
+        AfficherListe(panier);
+       function AfficherListe(panier){
+
+                var panierString=" ";
+                panierString +="<h5>Voici votre liste</h5>";
+                var index=1;
+                panierString += index;
+
+                for(var x in panier){
+                    panierString +=document.getElementById("aa" + x).innerHTML + "  Qtes: " + panier[x][0] + '<br>';
+                    index +=1;
+                }
+                panierString+="<a href='/checkout' class='btn btn-primary'>CheckOut</a>";
+                $('[data-toggle="popover"]').popover();
+        document.getElementById("panier").setAttribute('data-content', panierString);
+       }
+
+      
+
+    </script>
+
+    <!--fin-->
+{% endblock %}
